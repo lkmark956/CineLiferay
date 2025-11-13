@@ -2,7 +2,7 @@
   "com.liferay.client.extension.type.configuration.CETConfiguration~liferay-sample-custom-element-4" : {
     ":configurator:policy" : "force",
     "baseURL" : "${portalURL}/o/liferay-sample-custom-element-4",
-    "buildTimestamp" : 1763072207701,
+    "buildTimestamp" : 1763075648894,
     "description" : "",
     "dxp.lxc.liferay.com.virtualInstanceId" : "default",
     "name" : "Liferay Sample Custom Element 4",
@@ -11,7 +11,7 @@
     "properties" : [ ],
     "sourceCodeURL" : "",
     "type" : "customElement",
-    "typeSettings" : [ "friendlyURLMapping=liferay-sample-custom-element-4", "instanceable=false", "urls=index.85665a7b9cc16f7d1535.js", "useESM=true", "portletCategoryName=category.client-extensions", "htmlElementName=liferay-sample-custom-element-4" ],
+    "typeSettings" : [ "friendlyURLMapping=liferay-sample-custom-element-4", "instanceable=false", "urls=index.7c8554e67d48182b0cb7.js", "useESM=true", "portletCategoryName=category.client-extensions", "htmlElementName=liferay-sample-custom-element-4" ],
     "webContextPath" : "/liferay-sample-custom-element-4"
   }
 }

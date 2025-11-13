@@ -13,7 +13,7 @@ export function TickerAnimation({ items = [], direction = 'left' }) {
         let startOffset = 0;
         if (direction === 'right') {
             // Para dirección derecha, empezar desde la izquierda (negativo)
-            const itemWidth = 220;
+            const itemWidth = 150;
             const totalWidth = itemWidth * items.length;
             startOffset = -totalWidth;
         }
@@ -24,7 +24,7 @@ export function TickerAnimation({ items = [], direction = 'left' }) {
         const interval = setInterval(() => {
             setOffset(prev => {
                 const newOffset = prev + speed;
-                const itemWidth = 220; // 200px card + 20px gap
+                const itemWidth = 150; // 130px card + 20px gap
                 const totalWidth = itemWidth * items.length;
                 
                 // Reset para dirección izquierda (va de derecha a izquierda)

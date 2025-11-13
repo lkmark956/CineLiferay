@@ -86,7 +86,6 @@ export function HomePage() {
             'section',
             { className: 'recent-movies-section' },
             React.createElement('h2', { className: 'section-title' }, 
-                React.createElement('span', { className: 'section-icon section-icon-new' }),
                 'Recién Llegadas'
             ),
             React.createElement(
@@ -115,16 +114,16 @@ export function HomePage() {
             'section',
             { className: 'top-movies-section' },
                 React.createElement('h2', { className: 'section-title' }, 
-                    React.createElement('span', { className: 'section-icon section-icon-fire' }),
                     'Top 5 Más Vistas'
                 ),
             React.createElement(
                 'div',
                 { className: 'top-movies-horizontal' },
-                topMovies.map(movie =>
+                topMovies.map((movie, index) =>
                     React.createElement(
                         'div',
                         { key: movie.id, className: 'top-movie-card' },
+                        React.createElement('div', { className: 'movie-rank-number' }, (index + 1).toString()),
                         React.createElement('img', {
                             src: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
                             alt: movie.title,
