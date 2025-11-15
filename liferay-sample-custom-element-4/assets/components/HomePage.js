@@ -6,11 +6,14 @@
 import React, { useState, useEffect } from 'react';
 import tmdbService from '../services/tmdbService.js';
 import { TickerAnimation } from './TickerAnimation.js';
+import { MovieDetailPanel } from './MovieDetailPanel.js';
 
 export function HomePage() {
     const [topMovies, setTopMovies] = useState([]);
     const [tickerMovies, setTickerMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const [clickedCardId, setClickedCardId] = useState(null);
 
     useEffect(() => {
         loadHomeData();
@@ -39,6 +42,19 @@ export function HomePage() {
             console.error('Error cargando datos:', error);
             setLoading(false);
         }
+    };
+
+    const handleMovieClick = (movie, movieId) => {
+        setClickedCardId(movieId);
+        // Pequeño delay para que la animación de la tarjeta se vea
+        setTimeout(() => {
+            setSelectedMovie(movie);
+        }, 300);
+    };
+
+    const handleCloseDetail = () => {
+        setSelectedMovie(null);
+        setClickedCardId(null);
     };
 
     if (loading) {
@@ -94,7 +110,11 @@ export function HomePage() {
                 tickerMovies.slice(0, 5).map(movie =>
                     React.createElement(
                         'div',
-                        { key: movie.id, className: 'top-movie-card' },
+                        { 
+                            key: movie.id, 
+                            className: `top-movie-card ${clickedCardId === `recent-${movie.id}` ? 'flipping' : ''}`,
+                            onClick: () => handleMovieClick(movie, `recent-${movie.id}`)
+                        },
                         React.createElement('img', {
                             src: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
                             alt: movie.title,
@@ -122,7 +142,11 @@ export function HomePage() {
                 topMovies.map((movie, index) =>
                     React.createElement(
                         'div',
-                        { key: movie.id, className: 'top-movie-card' },
+                        { 
+                            key: movie.id, 
+                            className: `top-movie-card ${clickedCardId === `top-${movie.id}` ? 'flipping' : ''}`,
+                            onClick: () => handleMovieClick(movie, `top-${movie.id}`)
+                        },
                         React.createElement('div', { className: 'movie-rank-number' }, (index + 1).toString()),
                         React.createElement('img', {
                             src: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
@@ -138,6 +162,10 @@ export function HomePage() {
                     )
                 )
             )
-        )
+        ),
+        React.createElement(MovieDetailPanel, {
+            movie: selectedMovie,
+            onClose: handleCloseDetail
+        })
     );
 }
