@@ -11,6 +11,17 @@ export function FavoritesPage() {
 
     useEffect(() => {
         loadFavorites();
+        
+        // Listener para abrir película desde PersonDetailPanel
+        const handleOpenMovieDetail = (event) => {
+            setSelectedMovie(event.detail);
+        };
+        
+        window.addEventListener('openMovieDetail', handleOpenMovieDetail);
+        
+        return () => {
+            window.removeEventListener('openMovieDetail', handleOpenMovieDetail);
+        };
     }, []);
 
     const loadFavorites = () => {

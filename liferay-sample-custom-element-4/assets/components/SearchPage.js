@@ -13,6 +13,19 @@ export function SearchPage() {
     const [searched, setSearched] = useState(false);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
+    React.useEffect(() => {
+        // Listener para abrir película desde PersonDetailPanel
+        const handleOpenMovieDetail = (event) => {
+            setSelectedMovie(event.detail);
+        };
+        
+        window.addEventListener('openMovieDetail', handleOpenMovieDetail);
+        
+        return () => {
+            window.removeEventListener('openMovieDetail', handleOpenMovieDetail);
+        };
+    }, []);
+
     const handleSearch = async (e) => {
         e.preventDefault();
         if (!searchQuery.trim()) return;

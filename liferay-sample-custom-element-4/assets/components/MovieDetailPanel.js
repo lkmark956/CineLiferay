@@ -23,9 +23,7 @@ export function MovieDetailPanel({ movie, onClose }) {
 
     useEffect(() => {
         if (movie) {
-            loadTrailer();
-            loadReviews();
-            loadCredits();
+            // Cargar datos básicos inmediatamente
             setUserLists(listsService.getLists());
             
             // Cargar reseña del usuario si existe
@@ -37,6 +35,17 @@ export function MovieDetailPanel({ movie, onClose }) {
                 setReviewRating(5);
                 setReviewText('');
             }
+
+            // Cargar datos pesados con delay para no bloquear el UI
+            setTimeout(() => {
+                loadTrailer();
+                loadReviews();
+            }, 100);
+
+            // Cargar créditos solo cuando se necesiten
+            setTimeout(() => {
+                loadCredits();
+            }, 300);
         }
     }, [movie]);
 
@@ -275,7 +284,7 @@ export function MovieDetailPanel({ movie, onClose }) {
                     React.createElement(
                         'div',
                         { className: 'cast-grid' },
-                        credits.cast.map(actor =>
+                        credits.cast.slice(0, 10).map(actor =>
                             React.createElement(
                                 'div',
                                 { 
@@ -288,7 +297,8 @@ export function MovieDetailPanel({ movie, onClose }) {
                                         ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
                                         : 'https://via.placeholder.com/185x278?text=Sin+Foto',
                                     alt: actor.name,
-                                    className: 'cast-photo'
+                                    className: 'cast-photo',
+                                    loading: 'lazy'
                                 }),
                                 React.createElement(
                                     'div',

@@ -29,6 +29,17 @@ export function ExplorePage() {
 
     useEffect(() => {
         loadGenreMovies();
+        
+        // Listener para abrir película desde PersonDetailPanel
+        const handleOpenMovieDetail = (event) => {
+            setSelectedMovie(event.detail);
+        };
+        
+        window.addEventListener('openMovieDetail', handleOpenMovieDetail);
+        
+        return () => {
+            window.removeEventListener('openMovieDetail', handleOpenMovieDetail);
+        };
     }, []);
 
     const loadGenreMovies = async () => {
