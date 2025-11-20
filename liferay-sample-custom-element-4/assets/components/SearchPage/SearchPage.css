@@ -1,0 +1,125 @@
+/* === SEARCH PAGE === */
+.search-page {
+	max-width: 1400px;
+	margin: 0 auto;
+	animation: pageSlideIn 0.5s ease-out;
+}
+
+@keyframes pageSlideIn {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.page-title {
+	font-size: 36px;
+	font-weight: 800;
+	color: var(--text-primary);
+	margin-bottom: 30px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	animation: fadeInDown 0.6s ease-out;
+}
+
+.page-icon {
+	display: inline-block;
+	width: 6px;
+	height: 36px;
+	background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+	border-radius: 3px;
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.search-form-large {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-bottom: 40px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.search-input-large {
+	flex: 1;
+	padding: 15px 20px;
+	font-size: 18px;
+	border: 2px solid rgba(139, 92, 246, 0.3);
+	border-radius: 12px;
+	background: var(--dark-surface);
+	color: var(--text-primary);
+	outline: none;
+	transition: all 0.3s ease;
+}
+
+.search-input-large:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.2);
+}
+
+.search-button-large {
+	padding: 15px 30px;
+	font-size: 18px;
+	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+	color: white;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.search-button-large:hover {
+	background: linear-gradient(135deg, #f40612, #c20812);
+	box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+}
+
+.results-count {
+	color: var(--text-secondary);
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.no-results {
+	text-align: center;
+	padding: 60px 20px;
+	color: var(--text-secondary);
+}
+
+.no-results p {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.no-results-hint {
+	font-size: 16px;
+	opacity: 0.7;
+}
+
+/* === MOVIE GRID === */
+.movies-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 25px;
+	padding: 20px 0;
+}

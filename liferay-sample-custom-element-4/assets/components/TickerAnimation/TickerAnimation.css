@@ -1,0 +1,64 @@
+/* === TICKER ANIMATION === */
+.ticker-container {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.ticker-track {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	will-change: transform;
+	align-items: center;
+	height: 100%;
+}
+
+.ticker-item {
+	position: relative;
+	min-width: 130px;
+	max-width: 130px;
+	height: 180px;
+	border-radius: 8px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+}
+
+.ticker-item:hover {
+	transform: translateY(-10px) scale(1.08);
+	box-shadow: 0 20px 40px rgba(229, 9, 20, 0.6);
+	z-index: 10;
+}
+
+.ticker-poster {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.ticker-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 10px;
+	background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+	color: white;
+}
+
+.ticker-title {
+	font-size: 11px;
+	font-weight: 600;
+	color: white;
+	line-height: 1.2;
+	margin-bottom: 3px;
+}
+
+.ticker-rating {
+	font-size: 10px;
+	color: #fbbf24;
+}

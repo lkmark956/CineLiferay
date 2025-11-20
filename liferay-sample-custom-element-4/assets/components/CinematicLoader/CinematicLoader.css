@@ -1,0 +1,134 @@
+/* === CINEMATIC LOADER === */
+.cinematic-loader-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 80px 20px;
+	gap: 30px;
+}
+
+.film-reel {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.reel-circle {
+	width: 80px;
+	height: 80px;
+	border: 6px solid var(--primary-color);
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--dark-surface);
+	box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+
+.left-reel {
+	animation: reelSpin 2s linear infinite;
+}
+
+.right-reel {
+	animation: reelSpin 2s linear infinite reverse;
+}
+
+@keyframes reelSpin {
+	to { transform: rotate(360deg); }
+}
+
+.reel-hole {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: var(--primary-color);
+	border-radius: 50%;
+	box-shadow: 0 0 5px rgba(229, 9, 20, 0.6);
+}
+
+.reel-hole:nth-child(1) { transform: rotate(0deg) translateY(-30px); }
+.reel-hole:nth-child(2) { transform: rotate(45deg) translateY(-30px); }
+.reel-hole:nth-child(3) { transform: rotate(90deg) translateY(-30px); }
+.reel-hole:nth-child(4) { transform: rotate(135deg) translateY(-30px); }
+.reel-hole:nth-child(5) { transform: rotate(180deg) translateY(-30px); }
+.reel-hole:nth-child(6) { transform: rotate(225deg) translateY(-30px); }
+.reel-hole:nth-child(7) { transform: rotate(270deg) translateY(-30px); }
+.reel-hole:nth-child(8) { transform: rotate(315deg) translateY(-30px); }
+
+.film-strip {
+	display: flex;
+	gap: 4px;
+	animation: filmMove 1.5s linear infinite;
+}
+
+@keyframes filmMove {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-5px); }
+}
+
+.film-frame {
+	width: 30px;
+	height: 40px;
+	background: linear-gradient(135deg, rgba(229, 9, 20, 0.3), rgba(229, 9, 20, 0.1));
+	border: 2px solid rgba(229, 9, 20, 0.5);
+	border-radius: 3px;
+	position: relative;
+	animation: frameFlash 1.5s ease-in-out infinite;
+}
+
+.film-frame:nth-child(2) { animation-delay: 0.3s; }
+.film-frame:nth-child(3) { animation-delay: 0.6s; }
+.film-frame:nth-child(4) { animation-delay: 0.9s; }
+.film-frame:nth-child(5) { animation-delay: 1.2s; }
+
+@keyframes frameFlash {
+	0%, 100% { opacity: 0.3; }
+	50% { opacity: 1; }
+}
+
+.loader-message {
+	color: var(--text-primary);
+	font-size: 20px;
+	font-weight: 600;
+	animation: messagePulse 2s ease-in-out infinite;
+}
+
+@keyframes messagePulse {
+	0%, 100% { opacity: 0.6; }
+	50% { opacity: 1; }
+}
+
+.countdown-bars {
+	display: flex;
+	gap: 8px;
+}
+
+.countdown-bar {
+	width: 40px;
+	height: 6px;
+	background: rgba(229, 9, 20, 0.2);
+	border-radius: 3px;
+	overflow: hidden;
+	position: relative;
+}
+
+.countdown-bar::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+	animation: barFill 1.5s ease-in-out infinite;
+}
+
+.countdown-bar:nth-child(2)::after { animation-delay: 0.2s; }
+.countdown-bar:nth-child(3)::after { animation-delay: 0.4s; }
+
+@keyframes barFill {
+	0% { transform: translateX(-100%); }
+	50%, 100% { transform: translateX(0); }
+}
